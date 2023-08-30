@@ -1,0 +1,58 @@
+version: "3.2"
+services:
+  repro-cgo-dynamic:
+    image: repro
+    entrypoint: /usr/local/bin/repro-cgo-dynamic
+    environment:
+      - TMPDIR=/consul/connect-inject
+    volumes:
+      - type: volume
+        source: inject
+        target: /consul/connect-inject
+  repro-cgo-dynamic-setcap:
+    image: repro
+    entrypoint: /usr/local/bin/repro-cgo-dynamic-setcap
+    environment:
+      - TMPDIR=/consul/connect-inject
+    volumes:
+      - type: volume
+        source: inject
+        target: /consul/connect-inject
+  repro-cgo-static:
+    image: repro
+    entrypoint: /usr/local/bin/repro-cgo-static
+    environment:
+      - TMPDIR=/consul/connect-inject
+    volumes:
+      - type: volume
+        source: inject
+        target: /consul/connect-inject
+  repro-cgo-static-setcap:
+    image: repro
+    entrypoint: /usr/local/bin/repro-cgo-static-setcap
+    environment:
+      - TMPDIR=/consul/connect-inject
+    volumes:
+      - type: volume
+        source: inject
+        target: /consul/connect-inject
+  repro-no-cgo:
+    image: repro
+    entrypoint: /usr/local/bin/repro-no-cgo
+    environment:
+      - TMPDIR=/consul/connect-inject
+    volumes:
+      - type: volume
+        source: inject
+        target: /consul/connect-inject
+  repro-no-cgo-setcap:
+    image: repro
+    entrypoint: /usr/local/bin/repro-no-cgo-setcap
+    environment:
+      - TMPDIR=/consul/connect-inject
+    volumes:
+      - type: volume
+        source: inject
+        target: /consul/connect-inject
+volumes:
+  inject:
